@@ -1,0 +1,33 @@
+#ifndef OLED_SH_1106_CMD_H_
+#define OLED_SH_1106_CMD_H_
+
+const uint8_t CONTROL_COMMAND = 0x00;
+const uint8_t CONTROL_DATA    = 0x40;
+
+const uint8_t SH1106_SETCONTRAST = 0x81;
+const uint8_t SH1106_DISPLAYALLON_RESUME = 0xA4;
+const uint8_t SH1106_DISPLAYALLON = 0xA5;
+const uint8_t SH1106_NORMALDISPLAY = 0xA6;
+const uint8_t SH1106_INVERTDISPLAY = 0xA7;
+const uint8_t SH1106_DISPLAYOFF = 0xAE;
+const uint8_t SH1106_DISPLAYON = 0xAF;
+const uint8_t SH1106_SETDISPLAYOFFSET = 0xD3;
+const uint8_t SH1106_SETCOMPINS = 0xDA;
+const uint8_t SH1106_SETVCOMDETECT = 0xDB;
+const uint8_t SH1106_SETDISPLAYCLOCKDIV = 0xD5;
+const uint8_t SH1106_SETPRECHARGE = 0xD9;
+const uint8_t SH1106_SETMULTIPLEX = 0xA8;
+const uint8_t SH1106_SETLOWCOLUMN = 0x00;
+const uint8_t SH1106_SETHIGHCOLUMN = 0x10;
+const uint8_t SH1106_SETSTARTLINE = 0x40;
+const uint8_t SH1106_MEMORYMODE = 0x20;
+const uint8_t SH1106_COLUMNADDR = 0x21;
+const uint8_t SH1106_PAGEADDR   = 0x22;
+const uint8_t SH1106_COMSCANINC = 0xC0;
+const uint8_t SH1106_COMSCANDEC = 0xC8;
+const uint8_t SH1106_SEGREMAP = 0xA0;
+const uint8_t SH1106_CHARGEPUMP = 0x8D;
+const uint8_t SH1106_SWITCHCAPVCC = 0x2;
+const uint8_t SH1106_NOP = 0xE3;
+
+#endif /* OLED_SH_1106_CMD_H_ */
