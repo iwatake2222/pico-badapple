@@ -1,15 +1,15 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.12)
 
 # CMake options
 set(BUILD_FOR_RASPBERRY_PI_PICO on CACHE BOOL "Build for Raspberry Pi Pico [on/off]")
 
 if(BUILD_FOR_RASPBERRY_PI_PICO)
-	set(PICO_SDK_PATH ../pico-sdk)
+	set(PICO_SDK_PATH ${CMAKE_CURRENT_LIST_DIR}/pico-sdk)
 	include(pico_sdk_import.cmake)
 endif()
 
 # Create project
-set(ProjectName "main")
+set(ProjectName "pico-badapple")
 project(${ProjectName})
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
