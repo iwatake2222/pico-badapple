@@ -3,9 +3,12 @@
 	- on Raspberry Pi
 	- on Raspberry Pi Pico
 
+![demo](00_doc/demo.gif)
+
 ## Hardware
 - OLED
 	- SH1106 (I2C)
+		- NOT SSD1306
 	- 128x64
 
 ## on Raspberry Pi 4
