@@ -43,3 +43,6 @@ nmake
 - `tool_converter` project converts image file(jpeg/mp4) to bin and C array
 - copy generated C array code and paste to `VideoData.h`
 
+## Acknowledgements
+- Original video
+	- https://www.nicovideo.jp/watch/sm8628149
