@@ -44,5 +44,7 @@ nmake
 - copy generated C array code and paste to `VideoData.h`
 
 ## Acknowledgements
+- pico-sdk
+	- Copyright 2020 (c) 2020 Raspberry Pi (Trading) Ltd.
 - Original video
 	- https://www.nicovideo.jp/watch/sm8628149
