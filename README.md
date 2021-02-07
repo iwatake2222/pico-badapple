@@ -21,6 +21,10 @@
 
 ### Build
 ```
+git clone https://github.com/iwatake2222/pico-badapple.git
+cd pico-badapple
+mkdir build && cd build
+
 cmake .. -DBUILD_FOR_RASPBERRY_PI_PICO=off
 make
 ```
@@ -35,6 +39,13 @@ make
 
 ### Build
 ```
+git clone https://github.com/iwatake2222/pico-badapple.git
+cd pico-badapple
+git submodule update --init
+# git submodule update --init --recursive
+mkdir build && cd build
+
+# For Windows
 cmake .. -G "NMake Makefiles" -DBUILD_FOR_RASPBERRY_PI_PICO=on
 nmake
 ```
