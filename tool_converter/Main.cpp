@@ -34,7 +34,7 @@ int32_t main()
 	std::ofstream ofs("out.bin", std::ios::out | std::ios::binary);
 	std::ofstream ofsCode("VideoData.h", std::ios::out);
 	ofsCode << std::showbase;
-	ofsCode << "unsigned char VideoData[][128*8] = { \n";
+	ofsCode << "const unsigned char VideoData[][128*8] = { \n";
 	
 	while (1) {
 		cv::Mat inputMat;
