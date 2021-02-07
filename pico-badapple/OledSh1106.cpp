@@ -13,7 +13,8 @@
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 #elif defined(PLATFORM_PIPICO)
-// todo
+#include "pico/stdlib.h"
+#include "hardware/i2c.h"
 #endif
 
 OledSh1106::OledSh1106()
@@ -147,7 +148,7 @@ void OledSh1106::drawChar(char c)
 }
 
 
-void OledSh1106::sendImage(uint8_t* buffer)
+void OledSh1106::sendImage(const uint8_t* buffer)
 {
 	uint8_t* txBuffer = new uint8_t[1 + WIDTH];
 	txBuffer[0] = CONTROL_DATA;
@@ -189,6 +190,11 @@ int32_t OledSh1106::i2cInitialize(uint8_t slaveAddress)
 		return -1;
 	}
 #elif defined(PLATFORM_PIPICO)
+	i2c_init(i2c0, 2000 * 1000);	/* 2MHz (might not work correctly) */
+	gpio_set_function(0, GPIO_FUNC_I2C);
+	gpio_set_function(1, GPIO_FUNC_I2C);
+	gpio_pull_up(0);
+	gpio_pull_up(1);
 #endif
 	return 0;
 }
@@ -209,6 +215,7 @@ void OledSh1106::i2cWrite(uint8_t* buffer, int32_t len)
 		printf("[error] i2cWrite\n");
 	}
 #elif defined(PLATFORM_PIPICO)
+	i2c_write_blocking(i2c0, SLAVE_ADDRESS, buffer, len, false);
 #endif
 }
 
@@ -219,5 +226,6 @@ void OledSh1106::i2cRead(uint8_t* buffer, int32_t len)
 		printf("[error] i2cRead\n");
 	}
 #elif defined(PLATFORM_PIPICO)
+	i2c_read_blocking(i2c0, SLAVE_ADDRESS, buffer, len, false);
 #endif
 }

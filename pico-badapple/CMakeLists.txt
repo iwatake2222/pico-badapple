@@ -1,9 +1,3 @@
-cmake_minimum_required(VERSION 3.0)
-
-# Create project
-set(ProjectName "main")
-project(${ProjectName})
-
 # Create executable file
 add_executable(${ProjectName}
 	Main.cpp
@@ -12,4 +6,8 @@ add_executable(${ProjectName}
 	font.cpp
 	VideoData.h
 )
- 
+
+if(BUILD_FOR_RASPBERRY_PI_PICO)
+	target_link_libraries(${ProjectName} pico_stdlib hardware_i2c)
+	pico_add_extra_outputs(${ProjectName})
+endif()

@@ -3,8 +3,9 @@
 
 #include <cstdint>
 
-#define PLATFORM_LINUX
-// #define PLATFORM_PIPICO
+// The following is defined in cmake
+// #define PLATFORM_LINUX
+// // #define PLATFORM_PIPICO
 
 class OledSh1106
 {
@@ -52,7 +53,7 @@ public:
 	~OledSh1106();
 	int32_t initialize();
 	void finalize();
-	void sendImage(uint8_t* buffer);
+	void sendImage(const uint8_t* buffer);
 	void setPos(uint8_t x, uint8_t y);
 	void fillRect(uint8_t data, uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
 	void setCharPos(uint8_t textX, uint8_t textY);
