@@ -1,8 +1,8 @@
 set(BinName "pico-badapple")
 add_executable(${BinName}
 	Main.cpp
-	OledSh1106.cpp
-	OledSh1106.h
+	oled.cpp
+	oled.h
 	font.cpp
 	VideoData.h
 )

@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include "OledSh1106.h"
+#include "oled.h"
 #include "VideoData.h"
 
 #if defined(PLATFORM_PIPICO)
@@ -11,11 +11,11 @@
 
 int main()
 {
-	OledSh1106 oled;
-	oled.initialize();
-	oled.fillRect(0, 0, 0, OledSh1106::WIDTH, OledSh1106::HEIGHT);
-	oled.setCharPos(8, 4);
-	oled.printText("Bad Apple!!");
+	Oled oled;
+	oled.Initialize();
+	oled.FillRect(0, 0, 0, Oled::kWidth, Oled::kHeight);
+	oled.SetCharPos(8, 4);
+	oled.PrintText("Bad Apple!!");
 	
 #if defined(PLATFORM_LINUX)
 	int c = getchar();
@@ -23,8 +23,10 @@ int main()
 	sleep_ms(1000);
 #endif
 
-	for (const auto buffer : VideoData) {
-		oled.sendImage(buffer);
+	while(1) {
+		for (const auto buffer : VideoData) {
+			oled.SendImage(buffer);
+		}
 	}
 
 	return 0;

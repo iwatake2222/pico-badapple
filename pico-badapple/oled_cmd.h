@@ -1,5 +1,5 @@
-#ifndef OLED_SH_1106_CMD_H_
-#define OLED_SH_1106_CMD_H_
+#ifndef OLED_CMD_H_
+#define OLED_CMD_H_
 
 const uint8_t CONTROL_COMMAND = 0x00;
 const uint8_t CONTROL_DATA    = 0x40;
@@ -30,4 +30,4 @@ const uint8_t SH1106_CHARGEPUMP = 0x8D;
 const uint8_t SH1106_SWITCHCAPVCC = 0x2;
 const uint8_t SH1106_NOP = 0xE3;
 
-#endif /* OLED_SH_1106_CMD_H_ */
+#endif /* OLED_CMD_H_ */

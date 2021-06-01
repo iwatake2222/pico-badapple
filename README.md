@@ -6,10 +6,12 @@
 ![demo](00_doc/demo.gif)
 
 ## Hardware
-- OLED
+- OLED (128x64)
 	- SH1106 (I2C)
-		- NOT SSD1306
-	- 128x64
+		- set `kIsSh1106 = true`
+	- or
+	- SSD1306 (I2C)
+		- set `kIsSh1106 = false`
 
 ## on Raspberry Pi 4
 ### Connection
@@ -48,6 +50,11 @@ mkdir build && cd build
 # For Windows
 cmake .. -G "NMake Makefiles" -DBUILD_FOR_RASPBERRY_PI_PICO=on
 nmake
+
+# For Windows MSYS2 (Run the following commands on MSYS2)
+# cmake .. -G "MSYS Makefiles" -DCMAKE_BUILD_TYPE=Debug -DPICO_DEOPTIMIZED_DEBUG=on
+cmake .. -G "MSYS Makefiles" 
+make
 ```
 
 ## Convert image data
