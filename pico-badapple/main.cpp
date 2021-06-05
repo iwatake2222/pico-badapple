@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include "oled.h"
-#include "VideoData.h"
+#include "video_data.h"
 
 #if defined(PLATFORM_PIPICO)
 #include "pico/stdlib.h"

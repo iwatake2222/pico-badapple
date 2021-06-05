@@ -1,10 +1,10 @@
 set(BinName "pico-badapple")
 add_executable(${BinName}
-	Main.cpp
+	main.cpp
 	oled.cpp
 	oled.h
 	font.cpp
-	VideoData.h
+	video_data.h
 )
 
 if(BUILD_FOR_RASPBERRY_PI_PICO)
