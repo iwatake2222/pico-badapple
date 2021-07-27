@@ -1,17 +1,12 @@
 /*
- * font.cpp
+ * my_font.cpp
  *
  *  Created on: 2017/08/02
  *      Author: take-iwiw
  */ 
+#include "my_font.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern const unsigned char font[];
-
-const unsigned char font[] = {
+const unsigned char kMyFont[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00,
 	0x3E, 0x5B, 0x4F, 0x5B, 0x3E,
 	0x3E, 0x6B, 0x4F, 0x6B, 0x3E,
@@ -268,7 +263,3 @@ const unsigned char font[] = {
 	0x00, 0x3C, 0x3C, 0x3C, 0x3C,
 	0x00, 0x00, 0x00, 0x00, 0x00,
 };
-
-#ifdef __cplusplus
-}
-#endif

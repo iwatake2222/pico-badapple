@@ -14,9 +14,11 @@ int main()
 	Oled oled;
 	oled.Initialize();
 	oled.FillRect(0, 0, 0, Oled::kWidth, Oled::kHeight);
-	oled.SetCharPos(8, 4);
-	oled.PrintText("Bad Apple!!");
-	
+	oled.SetCharPos(4, 3);
+	oled.PrintText("Tokyo 2020 Olympics");
+	oled.SetCharPos(8, 5);
+	oled.PrintText("Pictogram ");
+
 #if defined(PLATFORM_LINUX)
 	int c = getchar();
 #elif defined(PLATFORM_PIPICO)
@@ -26,6 +28,7 @@ int main()
 	while(1) {
 		for (const auto buffer : VideoData) {
 			oled.SendImage(buffer);
+			sleep_ms(300);
 		}
 	}
 

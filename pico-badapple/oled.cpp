@@ -5,6 +5,7 @@
 
 #include "oled.h"
 #include "oled_cmd.h"
+#include "my_font.h"
 
 #if defined(PLATFORM_LINUX)
 #include <unistd.h>
@@ -15,7 +16,11 @@
 #elif defined(PLATFORM_PIPICO)
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
+static inline i2c_inst_t* GetI2c(int32_t i2c_num) {
+	return (i2c_num == 0) ? i2c0 : i2c1;
+}
 #endif
+
 
 Oled::Oled()
 {
@@ -142,9 +147,8 @@ void Oled::PrintText(const char* text)
 
 void Oled::DrawChar(char c)
 {
-	extern uint8_t font[];
 	for (uint8_t i = 0; i < kFontWidth; i++ ) {	
-		uint8_t line = *(font + (c * kFontWidth) + i);
+		uint8_t line = *(kMyFont + (c * kFontWidth) + i);
 		SendData(line);
 	}
 }
@@ -192,7 +196,7 @@ int32_t Oled::I2cInitialize(uint8_t slaveAddress)
 		return -1;
 	}
 #elif defined(PLATFORM_PIPICO)
-	i2c_init(i2c0, 2000 * 1000);	/* 2MHz (might not work correctly) */
+	i2c_init(GetI2c(kI2cNum), 2000 * 1000);	/* 2MHz (might not work correctly) */
 	gpio_set_function(kGpioNumSda, GPIO_FUNC_I2C);
 	gpio_set_function(kGpioNumScl, GPIO_FUNC_I2C);
 	gpio_pull_up(kGpioNumSda);
@@ -217,7 +221,7 @@ void Oled::I2cWrite(uint8_t* buffer, int32_t len)
 		printf("[error] I2cWrite\n");
 	}
 #elif defined(PLATFORM_PIPICO)
-	i2c_write_blocking(i2c0, kSlaveAddress, buffer, len, false);
+	i2c_write_blocking(GetI2c(kI2cNum), kSlaveAddress, buffer, len, false);
 #endif
 }
 
@@ -228,6 +232,6 @@ void Oled::I2cRead(uint8_t* buffer, int32_t len)
 		printf("[error] I2cRead\n");
 	}
 #elif defined(PLATFORM_PIPICO)
-	i2c_read_blocking(i2c0, kSlaveAddress, buffer, len, false);
+	i2c_read_blocking(GetI2c(kI2cNum), kSlaveAddress, buffer, len, false);
 #endif
 }

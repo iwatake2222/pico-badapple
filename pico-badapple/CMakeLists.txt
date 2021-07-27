@@ -3,7 +3,8 @@ add_executable(${BinName}
 	main.cpp
 	oled.cpp
 	oled.h
-	font.cpp
+	my_font.cpp
+	my_font.h
 	video_data.h
 )
 
